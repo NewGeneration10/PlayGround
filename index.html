@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070a14" />
+  <meta name="description" content="A classic arcade maze, rewired: collect the memory shards while the ghosts learn your route." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23080b14%22/><path d=%22M16 5a11 11 0 1 0 11 11H16z%22 fill=%22%23d8f36a%22/></svg>" />
+  <title>MAZE//MEMORY — The ghosts are learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Maze Memory home"><span class="brand-mark">M<span>·</span></span><span>MAZE<span class="brand-slash">//</span>MEMORY</span></a>
+      <div class="top-status"><span class="live-dot"></span> NEURAL ARCADE <span class="status-divider">/</span> SYSTEM ONLINE</div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound"><span id="soundIcon">♪</span><span class="sound-label">SOUND ON</span></button>
+    </header>
+
+    <section class="intro">
+      <div class="eyebrow"><span class="eyebrow-line"></span> A CLASSIC, REWIRED</div>
+      <h1>They remember<br class="mobile-break"> <span>where you run.</span></h1>
+      <p>Every turn leaves a trace. Clear the maze, and the ghosts will study your route for the next round.</p>
+    </section>
+
+    <section class="game-layout" aria-label="Pac-Man game">
+      <div class="game-column">
+        <div class="game-bar">
+          <div class="game-name"><span class="mini-pac">◕</span> <span>THE MEMORY MAZE</span></div>
+          <div class="level-chip"><span class="level-dot"></span> LEVEL <b id="level">01</b></div>
+        </div>
+        <div class="board-frame">
+          <canvas id="game" aria-label="Pac-Man maze. Use arrow keys or WASD to move." role="img"></canvas>
+          <div class="screen-overlay" id="overlay">
+            <div class="overlay-card">
+              <div class="overlay-kicker" id="overlayKicker">READY WHEN YOU ARE</div>
+              <h2 id="overlayTitle">Outrun<br>your own shadow.</h2>
+              <p id="overlayText">Collect every memory shard. Don't let them catch you learning.</p>
+              <button class="primary-button" id="playButton"><span>START RUN</span><span class="button-arrow">↗</span></button>
+              <div class="overlay-hint" id="overlayHint">PRESS <kbd>ENTER</kbd> TO BEGIN</div>
+            </div>
+          </div>
+          <div class="pause-badge" id="pauseBadge">PAUSED <span>Ⅱ</span></div>
+        </div>
+        <div class="game-footer">
+          <div class="footer-tip"><span class="key-icon">⌨</span> <span>ARROWS / WASD TO MOVE</span></div>
+          <div class="footer-tip"><span class="power-icon">✦</span> <span>POWER CORES FLIP THE HUNT</span></div>
+          <button class="pause-button" id="pauseButton" aria-label="Pause game">Ⅱ <span>PAUSE</span></button>
+        </div>
+      </div>
+
+      <aside class="side-panel">
+        <section class="stat-card score-card">
+          <div class="card-label">CURRENT SCORE <span class="label-icon">✳</span></div>
+          <div class="score-value" id="score">000000</div>
+          <div class="score-bottom"><span>BEST</span><b id="best">000000</b><span class="best-tag">PERSONAL</span></div>
+        </section>
+        <section class="stat-card status-card">
+          <div class="card-heading"><span class="card-label">YOUR STATUS</span><span class="status-ready" id="statusText">READY</span></div>
+          <div class="lives-row"><span class="sub-label">LIVES</span><div class="lives" id="lives"><i></i><i></i><i></i></div></div>
+          <div class="divider"></div>
+          <div class="memory-heading"><div><span class="sub-label">GHOST MEMORY</span><span class="memory-count" id="memoryCount">0 TRACE POINTS</span></div><span class="memory-glyph">⌁</span></div>
+          <div class="memory-track"><div class="memory-fill" id="memoryFill"></div><span class="memory-marker" id="memoryMarker"></span></div>
+          <div class="memory-note" id="memoryNote">They don't know your rhythm. Yet.</div>
+        </section>
+        <section class="ghost-card">
+          <div class="ghost-card-head"><span class="card-label">THEY'RE OUT THERE</span><span class="pulse-ring"></span></div>
+          <div class="ghost-list">
+            <div class="ghost-row"><span class="ghost-avatar ghost-red">●</span><span class="ghost-name">BLINK</span><span class="ghost-trait">THE HUNTER</span></div>
+            <div class="ghost-row"><span class="ghost-avatar ghost-pink">●</span><span class="ghost-name">ECHO</span><span class="ghost-trait">THE FOLLOWER</span></div>
+            <div class="ghost-row"><span class="ghost-avatar ghost-cyan">●</span><span class="ghost-name">STATIC</span><span class="ghost-trait">THE AMBUSH</span></div>
+          </div>
+        </section>
+        <div class="quote-card"><span class="quote-mark">“</span><p>Every corridor is a data point.</p><span class="quote-by">— THE MAZE ENGINE</span></div>
+      </aside>
+    </section>
+
+    <div class="mobile-controls" aria-label="Touch movement controls">
+      <button data-dir="up" class="control up" aria-label="Move up">▲</button>
+      <button data-dir="left" class="control left" aria-label="Move left">◀</button>
+      <button data-dir="down" class="control down" aria-label="Move down">▼</button>
+      <button data-dir="right" class="control right" aria-label="Move right">▶</button>
+    </div>
+    <footer class="site-footer"><span>MAZE//MEMORY <span class="footer-muted">— A STUDY IN PATTERNS</span></span><span>RUN. LEARN. REPEAT. <span class="footer-star">✳</span></span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
