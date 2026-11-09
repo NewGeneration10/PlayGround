@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#090b16">
+<title>Rival Circuit — Arcade Combat</title><link rel="stylesheet" href="style.css">
+</head>
+<body><main id="app"><canvas id="game" aria-label="Rival Circuit fighting game"></canvas>
+<div id="overlay" class="overlay"><header><div class="brand"><span class="brand-mark">RC</span><div><h1>RIVAL <b>CIRCUIT</b></h1><small>NEON LEAGUE · SEASON 01</small></div></div><div class="coins">◈ <span id="coins">0</span> <small>LEGEND COINS</small></div></header>
+<section class="hero"><div class="eyebrow">THE CITY NEVER STOPS FIGHTING</div><h2>CLAIM YOUR<br><em>RIVALRY.</em></h2><p>One city. Twenty legends. Only one champion.</p><button class="primary" id="fightBtn">ENTER THE CIRCUIT <span>→</span></button><div class="hero-meta">ARCADE MODE <i>•</i> 1 PLAYER <i>•</i> TOUCH READY</div></section>
+<nav><button data-page="fighters"><span>◉</span> FIGHTERS</button><button data-page="arenas"><span>▧</span> ARENAS</button><button data-page="market"><span>◇</span> MARKET</button><button data-page="settings"><span>⚙</span> SETTINGS</button></nav>
+<div class="status"><span><i class="live"></i> CIRCUIT ONLINE</span><span>EST. 2026</span></div></div>
+<div id="panel" class="panel hidden"><button class="close" id="closePanel">×</button><div id="panelContent"></div></div>
+<div id="matchHud" class="match-hud hidden"><div class="fighter-hud left"><b id="pName">KENJI</b><div class="bar"><i id="pHealth"></i></div><small>PLAYER 1</small></div><div class="round-info"><span id="roundText">ROUND 1</span><strong id="timer">60</strong><small id="rounds">● ○ ○　—　○ ○ ○</small></div><div class="fighter-hud right"><b id="cpuName">MAYA</b><div class="bar"><i id="cpuHealth"></i></div><small>CPU · NORMAL</small></div><div class="special"><span>SPECIAL</span><div><i id="pSpecial"></i></div></div></div>
+<div id="controls" class="controls hidden"><div class="dpad"><button data-key="left">◀</button><button data-key="up">▲</button><button data-key="down">▼</button><button data-key="right">▶</button></div><div class="actions"><button data-key="block" class="block">B<small>BLOCK</small></button><button data-key="kick" class="kick">A<small>KICK</small></button><button data-key="punch" class="punch">X<small>PUNCH</small></button><button data-key="special" class="special-btn">Y<small>SPECIAL</small></button></div></div>
+<div id="result" class="result hidden"><div class="eyebrow">MATCH COMPLETE</div><h2 id="resultTitle">K.O.</h2><p id="resultCopy"></p><button class="primary" id="rematch">REMATCH →</button><button class="secondary" id="homeBtn">MAIN MENU</button></div>
+</main><script src="game.js"></script></body></html>
